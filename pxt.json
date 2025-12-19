@@ -3,8 +3,8 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "v1": "*",
-        "servo": "*"
+        "servo": "*",
+        "v2": "*"
     },
     "files": [
         "main.blocks",
