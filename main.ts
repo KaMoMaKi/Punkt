@@ -14,26 +14,21 @@ function Display () {
         led.plot(XAktuell, YAktuell)
         XAlt = XAktuell
         YAlt = YAktuell
-        basic.setLedColor(0x00ff00)
         Debug += 1
-    }
-}
-function Neigung () {
-    if (true) {
-    	
-    } else if (false) {
-    	
-    } else if (false) {
-    	
-    } else if (false) {
-    	
-    } else {
-        basic.setLedColor(0xff0000)
     }
 }
 input.onGesture(Gesture.LogoDown, function () {
     if (!(YAktuell <= 0)) {
         YAktuell += -1
+    }
+})
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "LED_AN") {
+        pins.digitalWritePin(DigitalPin.P0, 1)
+    } else if (receivedString == "LED_AUS") {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+    } else {
+    	
     }
 })
 input.onGesture(Gesture.LogoUp, function () {
@@ -46,12 +41,12 @@ let YAlt = 0
 let YAktuell = 0
 let XAlt = 0
 let XAktuell = 0
+radio.setGroup(4)
 XAktuell = 2
 XAlt = 2
 YAktuell = 2
 YAlt = 2
 led.plot(2, 2)
 basic.forever(function () {
-    Neigung()
     Display()
 })
